@@ -1,0 +1,17 @@
+#+TITLE: Find My Paw
+
+* Tabla de Contenidos
+:PROPERTIES:
+:TOC:      :include all
+:END:
+:CONTENTS:
+- [[#tabla-de-contenidos][Tabla de Contenidos]]
+- [[#descripción][Descripción]]
+:END:
+
+* Descripción
+Este proyecto es la base par  para enviar y recibir ubicación
+la ubicación de cualquier dispositivo que reciba SMS.
+La idea en general consiste en atrapar los SMS que la
+aplicación reciba e interpretarla en un mapa que útiliza
+la API de Google Maps
