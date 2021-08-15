@@ -1,11 +1,12 @@
 import 'assets/color.dart';
+import 'pages/find_map.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(padding: EdgeInsets.zero, children: [
+        child: ListView(padding: EdgeInsets.zero, children: [
       UserAccountsDrawerHeader(
         accountName: Text('Marisa Example'),
         accountEmail: Text('example@gmail.com'),
@@ -28,15 +29,17 @@ class NavBar extends StatelessWidget {
         ),
       ),
       ListTile(
-        leading: Icon(Icons.person_outline),
-        title: Text('Perfil'),
-        onTap: () => null // TODO
-      ),
+          leading: Icon(Icons.person_outline),
+          title: Text('Perfil'),
+          onTap: () => null // TODO
+          ),
       ListTile(
-        leading: Icon(Icons.map_rounded),
-        title: Text('Mapa'),
-        onTap: () => null // TODO
-      )
+          leading: Icon(Icons.map_rounded),
+          title: Text('Mapa'),
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => PagesFindMap()));
+          })
     ]));
   }
 }
