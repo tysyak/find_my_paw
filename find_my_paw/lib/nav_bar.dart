@@ -36,7 +36,12 @@ class NavBar extends StatelessWidget {
       ListTile(
           leading: Icon(Icons.map_rounded),
           title: Text('Mapa'),
-          onTap: () => Navigator.pushNamed(context, '/map'))
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PagesFindMap()),
+            );
+          })
     ]));
   }
 }
