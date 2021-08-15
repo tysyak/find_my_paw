@@ -1,4 +1,5 @@
 import 'nav_bar.dart';
+import 'pages/find_map.dart';
 import 'assets/color.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,11 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(title: 'Find My Pawn Home Page'),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MainPage(title: 'Find My Pawn Home Page'),
+        '/map': (context) => const PagesFindMap()
+      }
     );
   }
 }

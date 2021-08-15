@@ -1,5 +1,4 @@
 import 'assets/color.dart';
-import 'pages/find_map.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
@@ -36,10 +35,7 @@ class NavBar extends StatelessWidget {
       ListTile(
           leading: Icon(Icons.map_rounded),
           title: Text('Mapa'),
-          onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => PagesFindMap()));
-          })
+          onTap: () => Navigator.pushNamed(context, '/map'))
     ]));
   }
 }
