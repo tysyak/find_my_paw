@@ -1,5 +1,5 @@
 import 'nav_bar.dart';
-import 'pages/find_map.dart';
+import 'package:find_my_paw/pages/all_pages.dart';
 import 'assets/color.dart';
 import 'package:flutter/material.dart';
 
