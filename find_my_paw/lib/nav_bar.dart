@@ -25,6 +25,16 @@ class NavBar extends StatelessWidget {
               image: NetworkImage(
                   'https://kohanna.s3.amazonaws.com/cdn/illustrations/60ff5d2c7f5196001e3f8b7e/460fcd9f9fZHB6nIkZ6pUngqTl1Iu6f1/712ea7f4-f20a-41fe-bc21-4c37fbfa7a91.jpeg-1280')),
         ),
+      ),
+      ListTile(
+        leading: Icon(Icons.person_outline),
+        title: Text('Perfil'),
+        onTap: () => null // TODO
+      ),
+      ListTile(
+        leading: Icon(Icons.map_rounded),
+        title: Text('Mapa'),
+        onTap: () => null // TODO
       )
     ]));
   }
