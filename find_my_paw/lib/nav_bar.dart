@@ -1,3 +1,4 @@
+import 'assets/color.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
@@ -19,7 +20,7 @@ class NavBar extends StatelessWidget {
           ),
         ),
         decoration: BoxDecoration(
-          color: Colors.blue,
+          color: AssetsColor.getLayout(),
           image: DecorationImage(
               fit: BoxFit.fill,
               image: NetworkImage(

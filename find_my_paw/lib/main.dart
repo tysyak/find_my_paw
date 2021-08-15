@@ -1,4 +1,5 @@
 import 'nav_bar.dart';
+import 'assets/color.dart';
 import 'package:flutter/material.dart';
 
 void main() =>  runApp(const MyApp());
@@ -10,8 +11,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Find My Pawn',
       theme: ThemeData(
+        primaryColor: AssetsColor.getLayout(),
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MainPage(title: 'Flutter Demo Home Page'),
+      home: const MainPage(title: 'Find My Pawn Home Page'),
     );
   }
 }
