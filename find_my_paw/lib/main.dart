@@ -26,11 +26,12 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      initialRoute: 'index',
       routes: {
-        '/': (context) => const MainPage(title: 'Find My Pawn Home Page'),
-        '/map': (context) => const PagesFindMap()
-      }
+        'index': (context) => MainPage(title: 'Find My Pawn Home Page'),
+        'map': (context) => PagesFindMap()
+      },
+      home: MainPage(title: 'Find My Pawn Home Page')
     );
   }
 }
