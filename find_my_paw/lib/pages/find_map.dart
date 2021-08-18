@@ -1,9 +1,10 @@
 import 'dart:async';
+import 'dart:typed_data';
 import 'package:find_my_paw/nav_bar.dart';
 import 'package:find_my_paw/assets/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-
+import 'package:location/location.dart';
 
 class PagesFindMap extends StatefulWidget {
   @override
@@ -11,34 +12,35 @@ class PagesFindMap extends StatefulWidget {
 }
 
 class PagesFindMapState extends State<PagesFindMap> {
-  Completer<GoogleMapController> _controller = Completer();
-
-  late GoogleMapController mapController;
-
-  final LatLng _center = const LatLng(19.3313833,-99.1868951);
-
-  void _onMapCreated(GoogleMapController controller) {
-    mapController = controller;
-  }
-
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        drawer: NavBar(),
-        appBar: AppBar(
-          title: Text('Maps Sample App'),
-          backgroundColor: AssetsColor.getLayout(),
-        ),
-        body: GoogleMap(
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
-          ),
-        ),
-      ),
-    );
-  }
+    // Initial location of the Map view
+    CameraPosition _initialLocation = CameraPosition(target: LatLng(0.0, 0.0));
 
+    // For controlling the view of the Map
+    late GoogleMapController mapController;
+    return MaterialApp(
+        home: Scaffold(
+      drawer: NavBar(),
+      appBar: AppBar(
+        title: Text('Maps Sample App'),
+        backgroundColor: AssetsColor.getLayout(),
+      ),
+      body: Stack(
+        children: <Widget>[
+          GoogleMap(
+            initialCameraPosition: _initialLocation,
+            myLocationEnabled: true,
+            myLocationButtonEnabled: false,
+            mapType: MapType.normal,
+            zoomGesturesEnabled: true,
+            zoomControlsEnabled: false,
+            onMapCreated: (GoogleMapController controller) {
+              mapController = controller;
+            },
+          ),
+        ],
+      ),
+    ));
+  }
 }
