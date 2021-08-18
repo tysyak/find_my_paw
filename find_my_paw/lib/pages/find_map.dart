@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:sms/sms.dart';
+
 //import 'package:sms/sms.dart';
 
 import 'dart:math' show cos, sqrt, asin;
@@ -20,6 +22,8 @@ class _PagesFindMapState extends State<PagesFindMap> {
   CameraPosition _initialLocation =
       CameraPosition(target: LatLng(19.3313833, -99.1868951));
   late GoogleMapController mapController;
+
+  SmsReceiver receiver = new SmsReceiver();
 
   late Position _currentPosition;
   String _currentAddress = '';
@@ -97,7 +101,7 @@ class _PagesFindMapState extends State<PagesFindMap> {
       setState(() {
         _currentPosition = position;
         print('Ubicación actual: $_currentPosition');
-        _startAddress = "(${position.latitude}, ${position.longitude})";
+        _startAddress = "${position.latitude},${position.longitude}";
         mapController.animateCamera(
           CameraUpdate.newCameraPosition(
             CameraPosition(
@@ -264,6 +268,7 @@ class _PagesFindMapState extends State<PagesFindMap> {
 
   _goToDestination() {
     _getCurrentLocation();
+    print(_startAddress);
     startAddressFocusNode.unfocus();
     desrinationAddressFocusNode.unfocus();
     setState(() {
@@ -302,6 +307,16 @@ class _PagesFindMapState extends State<PagesFindMap> {
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
+    receiver.onSmsReceived.listen((SmsMessage msg) {
+      _destinationAddress = "${msg.body}";
+      _goToDestination();
+    });
+    /**
+     * onPressed: (_destinationAddress != '')
+                              ? () async => _goToDestination()
+                              : null, 
+          */
+
     return Scaffold(
       drawer: NavBar(),
       appBar: AppBar(
