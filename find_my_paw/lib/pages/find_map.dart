@@ -39,6 +39,32 @@ class PagesFindMapState extends State<PagesFindMap> {
               mapController = controller;
             },
           ),
+          SafeArea(
+              child: Padding(
+                  padding: const EdgeInsets.only(left: 10.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ClipOval(
+                        child: Material(
+                          color: Colors.orange.shade100, // button color
+                          child: InkWell(
+                            splashColor:
+                                AssetsColor.getLayout(), // inkwell color
+                            child: SizedBox(
+                              width: 56,
+                              height: 56,
+                              child: Icon(Icons.my_location),
+                            ),
+                            onTap: () {
+                              // TODO: Add the operation to be performed
+                              // on button tap
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  )))
         ],
       ),
     ));
