@@ -1,5 +1,6 @@
 import 'package:find_my_paw/pages/all_pages.dart';
-import 'assets/color.dart';
+import 'package:find_my_paw/assets/color.dart';
+import 'package:find_my_paw/main.dart';
 import 'package:flutter/material.dart';
 
 class NavBar extends StatelessWidget {
@@ -28,6 +29,16 @@ class NavBar extends StatelessWidget {
                   'https://kohanna.s3.amazonaws.com/cdn/illustrations/60ff5d2c7f5196001e3f8b7e/460fcd9f9fZHB6nIkZ6pUngqTl1Iu6f1/712ea7f4-f20a-41fe-bc21-4c37fbfa7a91.jpeg-1280')),
         ),
       ),
+      ListTile(
+          leading: Icon(Icons.home),
+          title: Text('Inicio'),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => MainPage(title: 'Inicio')),
+            );
+          }),
       ListTile(
           leading: Icon(Icons.person_outline),
           title: Text('Perfil'),
