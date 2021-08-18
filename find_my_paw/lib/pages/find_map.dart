@@ -96,6 +96,7 @@ class _PagesFindMapState extends State<PagesFindMap> {
       setState(() {
         _currentPosition = position;
         print('Ubicación actual: $_currentPosition');
+        _startAddress = "(${position.latitude}, ${position.longitude})";
         mapController.animateCamera(
           CameraUpdate.newCameraPosition(
             CameraPosition(
@@ -146,19 +147,8 @@ class _PagesFindMapState extends State<PagesFindMap> {
       double destinationLatitude = destinationPlacemark[0].latitude;
       double destinationLongitude = destinationPlacemark[0].longitude;
 
-      String startCoordinatesString = '($startLatitude, $startLongitude)';
       String destinationCoordinatesString =
           '($destinationLatitude, $destinationLongitude)';
-
-      Marker startMarker = Marker(
-        markerId: MarkerId(startCoordinatesString),
-        position: LatLng(startLatitude, startLongitude),
-        infoWindow: InfoWindow(
-          title: 'Inicio en $startCoordinatesString',
-          snippet: _startAddress,
-        ),
-        icon: BitmapDescriptor.defaultMarker,
-      );
 
       Marker destinationMarker = Marker(
         markerId: MarkerId(destinationCoordinatesString),
@@ -170,7 +160,6 @@ class _PagesFindMapState extends State<PagesFindMap> {
         icon: BitmapDescriptor.defaultMarker,
       );
 
-      markers.add(startMarker);
       markers.add(destinationMarker);
 
       print(
@@ -398,9 +387,9 @@ class _PagesFindMapState extends State<PagesFindMap> {
                         ),
                         SizedBox(height: 5),
                         ElevatedButton(
-                          onPressed: (_startAddress != '' &&
-                                  _destinationAddress != '')
+                          onPressed: (_destinationAddress != '')
                               ? () async {
+                                  _getCurrentLocation();
                                   startAddressFocusNode.unfocus();
                                   desrinationAddressFocusNode.unfocus();
                                   setState(() {
