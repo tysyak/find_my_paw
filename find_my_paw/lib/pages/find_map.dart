@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+//import 'package:sms/sms.dart';
 
 import 'dart:math' show cos, sqrt, asin;
 
@@ -261,11 +262,41 @@ class _PagesFindMapState extends State<PagesFindMap> {
     polylines[id] = polyline;
   }
 
+  _goToDestination() {
+    _getCurrentLocation();
+    startAddressFocusNode.unfocus();
+    desrinationAddressFocusNode.unfocus();
+    setState(() {
+      if (markers.isNotEmpty) markers.clear();
+      if (polylines.isNotEmpty) polylines.clear();
+      if (polylineCoordinates.isNotEmpty) polylineCoordinates.clear();
+      _placeDistance = null;
+    });
+
+    _calculateDistance().then((isCalculated) {
+      if (isCalculated) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Calculo exitoso'),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error en calcular la distancia'),
+          ),
+        );
+      }
+    });
+  }
+
   @override
   void initState() {
     super.initState();
     _getCurrentLocation();
   }
+
+  //SmsReceiver receiver = new SmsReceiver();
 
   @override
   Widget build(BuildContext context) {
@@ -388,37 +419,7 @@ class _PagesFindMapState extends State<PagesFindMap> {
                         SizedBox(height: 5),
                         ElevatedButton(
                           onPressed: (_destinationAddress != '')
-                              ? () async {
-                                  _getCurrentLocation();
-                                  startAddressFocusNode.unfocus();
-                                  desrinationAddressFocusNode.unfocus();
-                                  setState(() {
-                                    if (markers.isNotEmpty) markers.clear();
-                                    if (polylines.isNotEmpty) polylines.clear();
-                                    if (polylineCoordinates.isNotEmpty)
-                                      polylineCoordinates.clear();
-                                    _placeDistance = null;
-                                  });
-
-                                  _calculateDistance().then((isCalculated) {
-                                    if (isCalculated) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text('Calculo exitoso'),
-                                        ),
-                                      );
-                                    } else {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                              'Error en calcular la distancia'),
-                                        ),
-                                      );
-                                    }
-                                  });
-                                }
+                              ? () async => _goToDestination()
                               : null,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
