@@ -41,16 +41,16 @@ class PagesFindMapState extends State<PagesFindMap> {
           ),
           SafeArea(
               child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
+                  padding: const EdgeInsets.only(left: 250.0, bottom: 10),
                   child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       ClipOval(
                         child: Material(
-                          color: Colors.orange.shade100, // button color
+                          color: AssetsColor.getLayout(), // button color
                           child: InkWell(
                             splashColor:
-                                AssetsColor.getLayout(), // inkwell color
+                                Colors.orange.shade100, // inkwell color
                             child: SizedBox(
                               width: 56,
                               height: 56,
