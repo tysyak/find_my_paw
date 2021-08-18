@@ -311,11 +311,6 @@ class _PagesFindMapState extends State<PagesFindMap> {
       _destinationAddress = "${msg.body}";
       _goToDestination();
     });
-    /**
-     * onPressed: (_destinationAddress != '')
-                              ? () async => _goToDestination()
-                              : null, 
-          */
 
     return Scaffold(
       drawer: NavBar(),
@@ -376,6 +371,28 @@ class _PagesFindMapState extends State<PagesFindMap> {
                         onTap: () {
                           mapController.animateCamera(
                             CameraUpdate.zoomOut(),
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  ClipOval(
+                    child: Material(
+                      color: Colors.blue.shade100, // button color
+                      child: InkWell(
+                        splashColor: Colors.blue, // inkwell color
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: Icon(Icons.message),
+                        ),
+                        onTap: () {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Solicitando ubicación'),
+                              // TODO: Enviar SMS a dispositivo registrado
+                            ),
                           );
                         },
                       ),
