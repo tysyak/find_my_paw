@@ -1,6 +1,7 @@
 import 'package:find_my_paw/nav_bar.dart';
 import 'package:find_my_paw/tools/netJson.dart';
 import 'package:find_my_paw/model/Device.dart';
+import 'package:find_my_paw/pages/device_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -23,14 +24,19 @@ class _PagesDeviceState extends State<PagesDevice> {
   List<Widget> PageDeviceWidget(List<Device> lista) {
     List<Widget> listDevices = [];
     lista.forEach((element) {
-      listDevices.add(ListTile(
-        leading: ConstrainedBox(
-          constraints: BoxConstraints(
-              maxHeight: 44, minHeight: 44, minWidth: 64, maxWidth: 64),
-        ),
+        listDevices.add(GestureDetector(
+            onTap: () {
+              Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PageDeviceDetail(element)),
+            );
+            },
+            child: Card(
+          child: ListTile(
+        leading: Image.network(element.avatar, fit: BoxFit.cover),
         title: Text(element.id.toString() + '.-' + element.name),
         subtitle: Text(element.phone_number),
-      ));
+      ))));
     });
     return listDevices;
   }
@@ -46,6 +52,7 @@ class _PagesDeviceState extends State<PagesDevice> {
             if (snapshot.hasData) {
               return ListView(children: PageDeviceWidget(snapshot.data!));
             } else {
+              print("No hay informacion");
               return Center(child: CircularProgressIndicator());
             }
           },
