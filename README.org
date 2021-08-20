@@ -1,4 +1,5 @@
 #+TITLE: Find My Paw
+#+AUTHOR: Arguelles Macosay Mariana, Guillén López Alam, Romero Andrade Cristian
 
 * Tabla de Contenidos
 :PROPERTIES:
