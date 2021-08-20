@@ -4,16 +4,30 @@ class Device {
   int id = 0;
   String phone_number = "";
   String name = "";
+  String avatar = "";
 
-  Device({required this.id, required this.phone_number, required this.name});
+  Device(
+      {required this.id,
+      required this.phone_number,
+      required this.name,
+      required this.avatar});
 
   Map<String, dynamic> toMap() {
-    return {'id': id, 'phone_number': phone_number, 'name': name};
+    return {
+      'id': id,
+      'phone_number': phone_number,
+      'name': name,
+      'avatar': avatar
+    };
   }
 
   factory Device.fromMap(Map<String, dynamic> map) {
     return Device(
-        id: map['id'], phone_number: map['phone_number'], name: map['name']);
+      id: map['id'],
+      phone_number: map['phone_number'],
+      name: map['name'],
+      avatar: map['avatar'],
+    );
   }
 
   String toJson() => jsonEncode(toMap());
@@ -22,5 +36,5 @@ class Device {
 
   @override
   String toString() =>
-      'Device(id: $id, phone_number: $phone_number, name: $name)';
+      'Device(id: $id, phone_number: $phone_number, name: $name, avatar: $avatar)';
 }
