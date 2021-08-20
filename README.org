@@ -16,6 +16,10 @@
     - [[#tools][tools]]
   - [[#herramientas-que-se-usaron][Herramientas que se usaron]]
     - [[#paquetes][Paquetes]]
+- [[#documentos-y-entregables][Documentos y entregables]]
+  - [[#video][Video]]
+  - [[#detalle-técnico][Detalle técnico]]
+  - [[#presentación][Presentación]]
 - [[#footnotes][Footnotes]]
 :END:
 
@@ -71,7 +75,7 @@ En esta ubicación se guardan los Widgets a mandar al usuario (que aquí seria e
 y vista).
 *** tools
 Aqui se ubica diferentes herramientas que se pueden implementar tanto en
-el directorio [[./find_my_paw/lib/model][model]] y [[./find_my_paw/lib/pages][pages]].
+el directorio [[./find_my_paw/lib/model][model]] y [[./find_my_paw/lib/pages][pages]]. Como en el caso de las solicitudes http.
 ** Herramientas que se usaron
 + Se uso [[https://mockoon.com/][Mockoon]] y en parte [[https://flask.palletsprojects.com/en/2.0.x/][Flask]] para obtener el API para el desarrollo de este proyecto
 + Se compilaba en un emulador Android Pixel 3A con la versión SDK 30 con una arquitectura x86.
@@ -80,10 +84,31 @@ el directorio [[./find_my_paw/lib/model][model]] y [[./find_my_paw/lib/pages][pa
 + [[https://pub.dev/documentation/sms/latest/][sms]]
   Este paquete esta a la escucha de la respuesta del dispositivo que envía la ubicación
   para su compilación necesaria, se necesita pasar el argumento =--no-sound-null-safety=.
-  Se eligio este paquete por ser de fácil implementación para ambos dispositivos (según
+  Se eligió este paquete por ser de fácil implementación para ambos dispositivos (según
   los repositorios de los paquetes de flutter/dart).
-+ google_maps_flutter
-+ geocoding
++ [[https://pub.dev/packages/google_maps_flutter][google_maps_flutter]]
+  Usamos la Api de Google, específicamente Google Maps para la ubicación.
++ [[https://pub.dev/packages/flutter_polyline_points][flutter_polyline_points]]
+  Este paquete nos ayuda a pintar los puntos de la ruta, la cual se calcula.
++ [[https://pub.dev/packages/geocoding][geocoding]]
++ [[https://pub.dev/packages/geolocator][geolocator]]
+  Los paquetes anteriores *geocoding* y *geolocator* nos ayudan a obtener nuestra
+  ubicación en tiempo real
++ [[https://pub.dev/packages/http][http]]
+  Para recuperar información usando método GET.
+
+* Documentos y entregables
+Dicha información se encuentran en las siguientes carpetas del Proyecto
+
+** Video
+Se anexa un [[./Documentos/Video.mp4][video]] en la carpeta [[./Documentos][Documentos]], a continuación un gif similar al video
+[[./Documentos/video.gif]]
+
+** Detalle técnico
+El detalle técnico es fragmento de este [[./README.org][README]], se incluye igual en la carpeta [[./Documentos/README.pdf][Documentos]].
+
+** Presentación
+La Presentación se ubica en [[./Presentacion/Find My Paw.pptx][Presentacion]].
 
 * Footnotes
 
