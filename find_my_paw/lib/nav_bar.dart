@@ -31,7 +31,7 @@ class NavBar extends StatelessWidget {
       ),
       ListTile(
           leading: Icon(Icons.home),
-          title: Text('Inicio'),
+          title: Text('Find My Pawn - - Dispositivos registrados'),
           onTap: () {
             Navigator.push(
               context,
