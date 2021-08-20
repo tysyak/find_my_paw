@@ -1,4 +1,5 @@
 #+TITLE: Find My Paw
+#+AUTHOR: Arguelles Macosay Mariana, Guillén López Alam, Romero Andrade Cristian
 
 * Tabla de Contenidos
 :PROPERTIES:
@@ -7,11 +8,83 @@
 :CONTENTS:
 - [[#tabla-de-contenidos][Tabla de Contenidos]]
 - [[#descripción][Descripción]]
+- [[#estado-de-la-técnica][Estado de la Técnica]]
+  - [[#distribución-del-proyecto][Distribución del proyecto]]
+    - [[#assets][assets]]
+    - [[#model][model]]
+    - [[#page][page]]
+    - [[#tools][tools]]
+  - [[#herramientas-que-se-usaron][Herramientas que se usaron]]
+    - [[#paquetes][Paquetes]]
+- [[#footnotes][Footnotes]]
 :END:
 
 * Descripción
 Este proyecto es la base par  para enviar y recibir ubicación
 la ubicación de cualquier dispositivo que reciba SMS.
 La idea en general consiste en atrapar los SMS que la
-aplicación reciba e interpretarla en un mapa que útiliza
+aplicación reciba e interpretarla en un mapa que utiliza
 la API de Google Maps
+
+* Estado de la Técnica
+** Distribución del proyecto
+Flutter a ser de un framework para aplicaciones móviles multiplataforma,
+nos da la libertad de crear nuestra estructura como es conveniente.
+En este proyecto se uso una estructura similar a MVC donde los directorios
+están distribuidas de la siguiente manera
+#+begin_src
+.
+├── find_my_paw
+│   ├── analysis_options.yaml
+│   ├── android
+│   ├── assets
+│   ├── build
+│   ├── find_my_paw.iml
+│   ├── ios
+│   ├── lib
+│   │   ├── assets
+│   │   ├── generated_plugin_registrant.dart
+│   │   ├── main.dart
+│   │   ├── model
+│   │   ├── nav_bar.dart
+│   │   ├── pages
+│   │   └── tools
+│   ├── pubspec.lock
+│   ├── pubspec.yaml
+│   ├── README.md
+│   ├── test
+│   └── web
+├── LICENSE
+├── README.org
+...
+#+end_src
+
+Donde, en [[./find_my_paw/lib][lib]], flutter compila el proyecto que estamos desarrollando
+*** assets
+Se ubica la configuración global del proyecto, como son los colores
+y las llaves de las API para el uso de distintos módulos externos[fn:1].
+*** model
+Aqui se hacen las operaciones para recuperar la información de una base de datos
+o bien la implementación de una API REST.
+*** page
+En esta ubicación se guardan los Widgets a mandar al usuario (que aquí seria el controlador
+y vista).
+*** tools
+Aqui se ubica diferentes herramientas que se pueden implementar tanto en
+el directorio [[./find_my_paw/lib/model][model]] y [[./find_my_paw/lib/pages][pages]].
+** Herramientas que se usaron
++ Se uso [[https://mockoon.com/][Mockoon]] y en parte [[https://flask.palletsprojects.com/en/2.0.x/][Flask]] para obtener el API para el desarrollo de este proyecto
++ Se compilaba en un emulador Android Pixel 3A con la versión SDK 30 con una arquitectura x86.
+
+*** Paquetes
++ [[https://pub.dev/documentation/sms/latest/][sms]]
+  Este paquete esta a la escucha de la respuesta del dispositivo que envía la ubicación
+  para su compilación necesaria, se necesita pasar el argumento =--no-sound-null-safety=.
+  Se eligio este paquete por ser de fácil implementación para ambos dispositivos (según
+  los repositorios de los paquetes de flutter/dart).
++ google_maps_flutter
++ geocoding
+
+* Footnotes
+
+[fn:1]En este caso para la API de Google Maps
