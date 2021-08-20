@@ -1,5 +1,5 @@
 name: find_my_paw
-description: A new Flutter project.
+description: GoeLocalozador mediante SMS
 
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -40,6 +40,7 @@ dependencies:
   geocoding: ^2.0.0
   flutter_polyline_points: ^1.0.0
   sms: ^0.2.4
+  http: ^0.13.3
 
 dev_dependencies:
   flutter_test:
